@@ -3,22 +3,28 @@ var mongoose = require('mongoose');
 // 定義フェーズ
 var Schema   = mongoose.Schema;
 
-var UserSchema = new Schema({
-  name:  String,
-  point: Number
+var UrlSchema = new Schema({
+    url: {
+        type: String,
+        unique: true
+    },  
+    shorten: String
 });
-mongoose.model('User', UserSchema);
+
+mongoose.model('Url', UrlSchema);
 
 // 使用フェーズ
 mongoose.connect('mongodb://localhost/urlshortener');
 
-var User = mongoose.model('User');
-var user = new User();
-user.name  = 'KrdLab';
-user.point = 777;
-user.save(function(err) {
-  if (err) { console.log(err); }
+var Url = mongoose.model('Url');
+var url = new Url();
+
+url.url  = 'https://github.com/okamuuu';
+url.shorten = 'M2jQam';
+url.save(function(err) {
+    if (err) { 
+        console.log(err); 
+    }
 });
 
-// ※注意：イベント駆動
 
