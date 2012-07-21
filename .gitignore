@@ -1,3 +1,4 @@
 .DS_Store
 hardcopy.*
-db/*
+db/*.*
+test/data/*.*
