@@ -1,0 +1,9 @@
+//extends layout
+
+block content
+
+- if (error) 
+  p #{error}
+- else 
+  p Short url is 
+    a(href='#{short_url}') #{short_url}
