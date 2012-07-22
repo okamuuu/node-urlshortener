@@ -1,10 +1,16 @@
-all: touch backup
+all: touch start
+
+start:
+	@mongod --dbpath=db/
 
 touch:
 	@touch db/
 
-backup:
-	@mongoexport -d urlshortener -c users > test/data/users.json
+export:
+	@mongoexport -d urlshortener -c urls > test/data/urls.json
+
+import:
+	@mongoimport -d urlshortener -c urls test/data/urls.json
 
 clean:
 	@echo 'db.dropDatabase()' | mongo urlshortener
